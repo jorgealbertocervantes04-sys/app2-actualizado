@@ -1,0 +1,135 @@
+@import url("https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 228 26% 10%;
+    --foreground: 0 0% 96%;
+    --card: 228 22% 13%;
+    --card-foreground: 0 0% 96%;
+    --popover: 228 22% 13%;
+    --popover-foreground: 0 0% 96%;
+    --primary: 15 100% 57%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 228 16% 18%;
+    --secondary-foreground: 0 0% 96%;
+    --muted: 228 16% 18%;
+    --muted-foreground: 228 10% 62%;
+    --accent: 15 100% 57%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 228 14% 24%;
+    --input: 228 14% 26%;
+    --ring: 15 100% 57%;
+    --radius: 0.375rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  html {
+    background-color: #12141f;
+  }
+  body {
+    @apply text-foreground antialiased;
+    background-color: #12141f;
+    background-image:
+      linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+    background-size: 48px 48px;
+    font-family: "Inter", system-ui, sans-serif;
+  }
+}
+
+.font-display {
+  font-family: "Rajdhani", "Inter", system-ui, sans-serif;
+}
+.font-code {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+}
+
+/* Acento industrial: subrayado grueso de 6px */
+.u-accent {
+  box-shadow: inset 0 -6px 0 #ff6026;
+}
+
+/* Viñeta superior tipo franja de seguridad */
+.safety-stripe {
+  background-image: repeating-linear-gradient(
+    -45deg,
+    #ff6026 0 14px,
+    #12141f 14px 28px
+  );
+}
+
+/* Animación de entrada por paso */
+@keyframes step-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.step-in {
+  animation: step-in 0.45s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* Barra de área */
+@keyframes grow-bar {
+  from {
+    width: 0;
+  }
+}
+.grow-bar {
+  animation: grow-bar 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+::selection {
+  background: #ff6026;
+  color: #fff;
+}
+
+/* Movimiento cinematográfico del fondo (Ken Burns) */
+@keyframes kenburns {
+  from {
+    transform: scale(1) translate(0, 0);
+  }
+  to {
+    transform: scale(1.12) translate(-1.5%, -1.5%);
+  }
+}
+.kenburns {
+  animation: kenburns 24s ease-in-out infinite alternate;
+}
+
+/* Entrada de personajes */
+@keyframes char-in {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.char-in {
+  animation: char-in 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .kenburns,
+  .char-in,
+  .step-in {
+    animation: none;
+  }
+}
